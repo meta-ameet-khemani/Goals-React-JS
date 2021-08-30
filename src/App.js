@@ -1,23 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import { Route, Switch } from "react-router-dom";
+import MainNavigation from "./components/layout/main-navigation";
+import TodoCreatePage from './pages/todo-create-page';
+import TodoDetailsPage from './pages/todo-details-page';
+import TodoListPage from './pages/todo-list-page';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <MainNavigation />
+      <Switch>
+        <Route path="/" exact>
+          <TodoListPage />
+        </Route>
+        <Route path="/todo-create" exact>
+          <TodoCreatePage />
+        </Route>
+        <Route path="/todo-details/:id" exact>
+          <TodoDetailsPage />
+        </Route>
+      </Switch>     
     </div>
   );
 }
