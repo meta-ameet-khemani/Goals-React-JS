@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Header from './components/layout/Header';
 import Login from './components/pages/Login';
 import Home from './components/pages/Home';
+import AuthContext from './store/auth-context';
 
 function App() {
 
@@ -19,17 +20,18 @@ function App() {
 
   useEffect(() => {
     const getLogStatus = localStorage.getItem('isLoggedIn');
-    if (getLogStatus === 1) {
+    if (getLogStatus === '1') {
       updateLogStatus(true);
     }
   }, []);
 
   return (
-    <React.Fragment>
-      <Header onLogout={logoutHandler} isLoggedIn={isLoggedIn} />
+    <AuthContext.Provider value={{ isLoggedIn: isLoggedIn, onLogout: logoutHandler }}>
+      {/* <Header onLogout={logoutHandler} isLoggedIn={isLoggedIn} /> */}
+      <Header />
       { isLoggedIn && <Home onLogout={logoutHandler} /> }
       { !isLoggedIn && <Login login={loginHandler} /> }
-    </React.Fragment>
+    </AuthContext.Provider>
   );
 }
 

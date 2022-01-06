@@ -1,10 +1,10 @@
 import React from "react";
 import Navigation from "./Navigation";
 
-const Header = props => {
+const Header = () => {
     return <React.Fragment>
         Header
-        { props.isLoggedIn ? <Navigation onLogout={props.onLogout} /> : <p></p> }
+        <Navigation />
     </React.Fragment>
 }
 
