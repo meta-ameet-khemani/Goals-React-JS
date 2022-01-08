@@ -1,0 +1,65 @@
+ErrorModal
+
+Fragment: Used when we just need to wrap our components in JSX.
+
+Portals: If we need to inject our component at particular position. Like we use our error modal to place it above root component so that it is topmost.
+         Or we can put our overlay components also.
+
+Ref: Get complete dom. Useful when we need value from input filed (not to update it's again [which we normally do using state]).
+
+Forward ref: Forward ref is such thing where we need to accesss/execute child's method/data from parent. It's like, suppose we have a custom input component
+             and we want to focus on specific field, if it doesn't have validated data. So we will create a ref inside our custom component and then link it
+             from parent also. And now we will have access to that custom component.
+	     
+	     This is possible because, using ref we get the actual dom elemant. Be it in using normal ref, where we get entire dom element or in using it
+             in our custom component (which by react will be turned into element).
+
+             Note: We have to create that custom element with the help of React.forwarRef((props, ref) => {})
+			 
+============================================================================================================================================================
+
+React: It's a javascript library, which works on UI through component based structure. Means, we create different and various components to bind them with
+	   the real UI. Components can be created through classes or functions. 
+	   
+	   React manages:
+					a. Components
+					b. State of component
+					c. Context
+					d. Props
+					
+					and in last it will create it's Virual DOM (react doesn't have any idea about real dom i.e the actual dom tree/structure which is 
+					rendered through html on browser). 
+					
+					At the time of changes in elements/components (through props or context or state or anything else), it compares last state of component
+					with the latest one and then shares only the changed data with the virtual dom, which in end will convert everything to the
+					real DOM. And this thing is known as Virtual DOM Diffing.
+					
+					For example: Suppose a component contains only a heading and toggle button to show/hide some paragraph. On every change (through
+								 state change or props or context) that whole component is re-rendered[re-evaluated] [we can prove this by putting a 
+								 console log inside that component and we will see it's output evertime we toggle that button] but if we check the 
+								 changes on browser through inspecting that element, we will find out that, only that praragraph is either inserted 
+								 or removed from actuall DOM, not the complete DOM.
+								 
+								Let's take another example, like App -> Headline -> Heading
+																				 -> Content
+																				 
+								We have like this structure, where we have a direct child component (Headline) and it also has 2 direct components
+								(Heading and Content). Suppose, we change the App component state, then all 4 (App, Headline, Heading, Content)
+								are re-evaluated [not re-rendered] again, because in react everything is function and those child components acts
+								as child/nested functions, so they all will be executed again. Though the new state will be compared with the old
+								one and only the changes are forwarded to the Virual DOM (which then forward to the actual DOM).
+								
+								And this is will happen again:
+															a. when we fix the child components i.e they don't depend on the state of parent 
+															   component, then also they will be re-evaluated [not re-rendered]. And this though 
+															   creates a lot of questions regarding the capability of React. Why so many re-evaluations, 
+															   whey so many comparisons, though we know that it is not re-rendered but again why so 
+															   much load on React.
+															   
+															Summary: Child component are like fixed components and only parent changes.
+								
+								But not on such condition, when parent's state control the activation of child component i.e parent's state decide
+								whether child components will be rendered or not. [OBVIOUSLY]
+								
+				
+					
