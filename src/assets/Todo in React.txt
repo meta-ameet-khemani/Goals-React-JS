@@ -62,4 +62,6 @@ React: It's a javascript library, which works on UI through component based stru
 								whether child components will be rendered or not. [OBVIOUSLY]
 								
 				
-					
+		If we have multiple state changing code in synchronous block, then those all changes will be executed in order, as react remembers the order.
+		But importantly, as we know that changes are scheduled, not instanteous task.
+		So, when react gets more than 1 changes in a single synchronous block, then those all are dispatched as a single bundle.			
