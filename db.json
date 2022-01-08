@@ -1,0 +1,28 @@
+{
+  "tasks": [
+    {
+      "id": 1,
+      "name": "Learn State Management in react",
+      "dateTime": "4 January 02:00 PM",
+      "reminder": false
+    },
+    {
+      "id": 2,
+      "name": "Last chapter in Node Goal",
+      "dateTime": "2 January 12:00",
+      "reminder": true
+    },
+    {
+      "id": 3,
+      "name": "Submit last month sheet",
+      "dateTime": "4 January 08:00 AM",
+      "reminder": false
+    },
+    {
+      "name": "Update on last day",
+      "dateTime": "4 Jan 10:00 AM",
+      "reminder": true,
+      "id": 4
+    }
+  ]
+}
