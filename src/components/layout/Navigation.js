@@ -22,9 +22,9 @@ const Navigation = () => {
 
     return (
         <div>
-            { ctx.isLoggedIn && <button type="button" onClick={() => console.log('Users Clicked')}>Users</button> }
-            { ctx.isLoggedIn && <button type="button" onClick={() => console.log('Admin Clicked')}>Admin</button> }
-            { ctx.isLoggedIn && <button type="button" onClick={ ctx.onLogout }>Logout</button> }
+            {ctx.isLoggedIn && <button type="button" onClick={() => console.log('Users Clicked')}>Users</button>}
+            {ctx.isLoggedIn && <button type="button" onClick={() => console.log('Admin Clicked')}>Admin</button>}
+            {ctx.isLoggedIn && <button type="button" onClick={ctx.onLogout}>Logout</button>}
         </div>
     );
 }

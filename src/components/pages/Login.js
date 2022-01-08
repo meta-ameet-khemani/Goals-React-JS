@@ -1,4 +1,5 @@
-import React, { useReducer } from "react";
+import React, { useReducer, useContext } from "react";
+import AuthContext from '../../store/auth-context';
 
 const initialState = {
     email: '',
@@ -18,27 +19,28 @@ const formReducer = (previousState, action) => {
     return { email: '', password: '', isValid: false };
 }
 
-const Login = props => {
+const Login = () => {
 
     const [formState, dispatchFn] = useReducer(formReducer, initialState);
+    const ctx = useContext(AuthContext);
 
     return <React.Fragment>
         Login page
-        <form onSubmit={props.login}>
+        <form onSubmit={ctx.onLogin}>
             <div>
                 <label>Email</label>
-                <input 
-                    type='text' 
+                <input
+                    type='text'
                     value={formState.email}
-                    onChange={(e) => dispatchFn({ type: 'EMAIL', value: e.target.value })} 
+                    onChange={(e) => dispatchFn({ type: 'EMAIL', value: e.target.value })}
                 />
             </div>
             <div>
                 <label>Password</label>
-                <input 
-                    type='password' 
-                    value={formState.password} 
-                    onChange={(e) => dispatchFn({ type: 'PASSWORD', value: e.target.value })} 
+                <input
+                    type='password'
+                    value={formState.password}
+                    onChange={(e) => dispatchFn({ type: 'PASSWORD', value: e.target.value })}
                 />
             </div>
             <button type="submit" disabled={!formState.isValid}>Login</button>
