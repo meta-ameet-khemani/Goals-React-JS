@@ -58,6 +58,10 @@ const cartSlice = createSlice({
     name: 'cartSlice',
     initialState,
     reducers: {
+        // adding this with slight changes (that might be commented in ProductItem file for showing asynchronous code working)
+        replaceCart(state, action) {
+            state.cartItems = action.payload;
+        },
         addProduct(state, action) {
             const product = products.find(product => product.id === action.payload);
             if (product) {
